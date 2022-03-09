@@ -13,10 +13,11 @@ const StatPage = () => {
         <NavBar />
 
         <div className="page">
-          Page
-          <div className="Hello">
-            <h1>Statistiques</h1>
+
+          <div className="mainContainer">
+            <h2>Stastistiques</h2>
             <div>
+              <h3>Résultats match équipe U10</h3>
             <Histogramme/>
             </div>
           </div>

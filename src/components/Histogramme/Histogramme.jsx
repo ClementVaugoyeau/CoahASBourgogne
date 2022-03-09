@@ -13,14 +13,14 @@ import {
 const data = [
   {
     name: 'Janvier',
-    victoire: 3,
+    victoire: 2,
     defaite: -1,
     amt: 2400,
   },
   {
     name: 'Février',
     victoire: 3,
-    defaite: 1,
+    defaite: -1,
     amt: 2210,
   },
   {
@@ -32,25 +32,25 @@ const data = [
   {
     name: 'Avril',
     victoire: 2,
-    defaite: 3,
+    defaite: -2,
     amt: 2000,
   },
   {
     name: 'Mai',
-    victoire: -1,
-    defaite: 4,
+    victoire: 1,
+    defaite: -1,
     amt: 2181,
   },
   {
     name: 'Juin',
     victoire: 2,
-    defaite: -3,
+    defaite: -1,
     amt: 2,
   },
   {
     name: 'Juillet',
     victoire: 3,
-    defaite: 4,
+    defaite: -2,
     amt: 2100,
   },
 ];
@@ -68,7 +68,7 @@ function Histogramme() {
     return (
 
         <div >
-            <div  >Balance</div>
+
 
 
             <div >
