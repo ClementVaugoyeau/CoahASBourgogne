@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-plusplus */
+/* eslint-disable one-var */
+/* eslint-disable prettier/prettier */
+import React, { useState, useEffect } from 'react';
+
 import './PlayerTable.scss';
 import { Table } from 'react-bootstrap';
-import data from '../mock-data.json';
+import playersData from './players-data.json';
+
 
 function PlayerTable() {
-  const [contacts, setContacts] = useState(data);
+  const [playersDataBase, setPlayersDatabase] = useState([playersData]);
 
   function myFunction() {
 
 
     // Declare variables
+    // eslint-disable-next-line no-var
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -51,10 +62,21 @@ function PlayerTable() {
 
   const playersArray = [];
 
+  const getData=()=>{
 
 
+     setPlayersDatabase(playersData);
+     console.log(playersData);
+     console.log(playersDataBase);
+
+  }
+
+  useEffect(()=>{
+
+    getData()
 
 
+  },[])
 
 
   const players = playerList.map((item, k) => (
@@ -65,10 +87,12 @@ function PlayerTable() {
     </tr>
   ));
 
+
+
   return (
     <div className="playerTableContainer">
 
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Bar de recherche" />
+      <input type="text" id="myInput" placeholder="Bar de recherche" />
       <Table id='myTable' className='playerTable' striped bordered hover responsive >
         <thead>
           <tr>
@@ -84,6 +108,11 @@ function PlayerTable() {
         </thead>
         <tbody>{players}</tbody>
       </Table>
+      <div> {
+
+playersDataBase.map((item, key)=><p key={key}>{item.about}</p>)
+
+}</div>
     </div>
   );
 }

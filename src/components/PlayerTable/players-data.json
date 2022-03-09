@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "licenseNumber": "2 220 934 354",
+    "fullName": "Jacob Mark",
+    "age": 9,
+    "email": "m.j@gmail.com",
+    "phoneNumber": "0601020304",
+    "categorie": "U10"
+  },
+  {
+    "id": 2,
+    "licenseNumber": "2 234 454 201",
+    "fullName": "Erik Smith",
+    "age": 10,
+    "email": "Erik.s@gmail.com",
+    "phoneNumber": "0701020304",
+    "categorie": "U11"
+  },
+  {
+    "id": 3,
+    "licenseNumber": "2 836 904 394",
+    "fullName": "Ryan Jones",
+    "age": 10,
+    "email": "R.J@gmail.com",
+    "phoneNumber": "0701020304",
+    "categorie": "U11"
+  },
+  {
+    "id": 4,
+    "licenseNumber": "2 836 904 394",
+    "fullName": "Alexis Ryan",
+    "age": 10,
+    "email": "A.R@gmail.com",
+    "phoneNumber": "0701020304",
+    "categorie": "U11"
+  }
+
+]
