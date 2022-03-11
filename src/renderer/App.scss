@@ -70,6 +70,7 @@ h2
 
 h3
 {
+  font-size: 1.5rem;
   color: rgb(0, 0, 0);
   margin-left: 2rem;
 }
@@ -157,6 +158,19 @@ th
   text-align: center;
   font-size: 1.2rem;
   padding: 2rem;
+}
+
+/*Stats Page */
+
+.chartContainer {
+
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.legendChart {
+
+  margin-left: 2rem;
 }
 
 

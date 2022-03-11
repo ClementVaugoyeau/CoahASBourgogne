@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
-import data from '../mock-data.json';
+
 
 function PlayerTable() {
   const [contacts, setContacts] = useState(data);

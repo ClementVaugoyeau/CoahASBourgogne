@@ -72,9 +72,10 @@ function Histogramme() {
 
 
             <div >
+            <p className='legendChart'>Victoires ou défaites par mois</p>
             <BarChart
                 width={600}
-                height={300}
+                height={270}
                 data={data}
                 margin={{
                     top: 50,
@@ -92,6 +93,7 @@ function Histogramme() {
                 <Bar dataKey="victoire" fill="#28a745" />
                 <Bar dataKey="defaite" fill="#DC3545" />
             </BarChart>
+
             </div>
         </div>
     );
