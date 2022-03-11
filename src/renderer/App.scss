@@ -68,7 +68,13 @@ h2
   margin: 2rem;
 }
 
-.Hello {
+h3
+{
+  color: rgb(0, 0, 0);
+  margin-left: 2rem;
+}
+
+.mainContainer {
 
   margin: 20px 0;
 }
@@ -143,6 +149,14 @@ th
   background-color: rgb(196, 196, 196);
 
 
+}
+
+/*Home Page */
+
+.textContainer {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
 }
 
 

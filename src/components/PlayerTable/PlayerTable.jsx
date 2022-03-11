@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-plusplus */
+/* eslint-disable one-var */
+/* eslint-disable prettier/prettier */
+import React, { useState, useEffect } from 'react';
+
 import './PlayerTable.scss';
-import { Table } from 'react-bootstrap';
-import data from '../mock-data.json';
+import { Table, Accordion, Form, Button } from 'react-bootstrap';
+import playersData from './players-data.json';
+
 
 function PlayerTable() {
-  const [contacts, setContacts] = useState(data);
+  const [playersDataBase, setPlayersDatabase] = useState([playersData]);
 
   function myFunction() {
 
 
     // Declare variables
+    // eslint-disable-next-line no-var
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -51,10 +62,21 @@ function PlayerTable() {
 
   const playersArray = [];
 
+  const getData=()=>{
 
 
+     setPlayersDatabase(playersData);
+     console.log(playersData);
+     console.log(playersDataBase);
+
+  }
+
+  useEffect(()=>{
+
+    getData()
 
 
+  },[])
 
 
   const players = playerList.map((item, k) => (
@@ -65,11 +87,41 @@ function PlayerTable() {
     </tr>
   ));
 
+
+
   return (
     <div className="playerTableContainer">
+      <Accordion  class=''>
+  <Accordion.Item className="accordion-item " eventKey="0">
+    <Accordion.Header  className="accordion-header"><div className='btn btn-primary'>Ajouter un joueur</div></Accordion.Header>
+    <Accordion.Body>
+    <Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
 
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Bar de recherche" />
-      <Table id='myTable' className='playerTable' striped bordered hover responsive >
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" />
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="Check me out" />
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Confirmer
+  </Button>
+</Form>
+
+    </Accordion.Body>
+  </Accordion.Item>
+ </Accordion>
+
+      <input type="text" id="myInput" placeholder="Bar de recherche" />
+      <Table id='myTable' className='table' striped bordered hover responsive >
         <thead>
           <tr>
             <th>#</th>
@@ -82,8 +134,13 @@ function PlayerTable() {
             <th>Equipe</th>
           </tr>
         </thead>
-        <tbody>{players}</tbody>
+        <tbody><tr></tr></tbody>
       </Table>
+      <div> {
+
+playersDataBase.map((item, key)=><p key={key}>{item.about}</p>)
+
+}</div>
     </div>
   );
 }
