@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
+import inventoryData from '../../database/inventory-data.json'
+
 
 
 function PlayerTable() {
-  const [contacts, setContacts] = useState(data);
+
 
   const FirstPlayer = [
     1,
@@ -23,7 +25,7 @@ function PlayerTable() {
     [2, 'Maillots M', 'Neufs', 30, '', ''],
     [3, 'Chasubles', 'Bon', 123, '', ''],
     [4, 'Plots', 'Bon', 60, '', ''],
-    [4, 'Buts déplaçable', 'Bon', 6, '', 'Un filet à réparer']
+
   ];
 
   const materials = InventoryList.map((item, k) => (
@@ -43,12 +45,23 @@ function PlayerTable() {
             <th>Types de matériels</th>
             <th>État</th>
             <th>Quantitée</th>
-            <th>Modifier</th>
+
             <th>Note</th>
+            <th>Modifier</th>
 
           </tr>
         </thead>
-        <tbody>{materials}</tbody>
+        {inventoryData.map((postDetail, index)=>{
+          return <tbody> <tr>
+          <td>{postDetail.id}</td>
+          <td>{postDetail.type}</td>
+          <td>{postDetail.etat}</td>
+          <td>{postDetail.quantite}</td>
+          <td>{postDetail.note}</td>
+          <td><button className='btn btn-dark'>Modifier</button></td>
+          </tr>
+          </tbody>
+          })}
       </Table>
     </div>
   );

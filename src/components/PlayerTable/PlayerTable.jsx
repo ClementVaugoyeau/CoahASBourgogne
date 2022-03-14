@@ -91,7 +91,7 @@ function PlayerTable() {
 
   <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
     <Form.Label>Nom</Form.Label>
-    <Form.Control type="password" placeholder="Nom" />
+    <Form.Control type='name' placeholder="Nom" />
   </Form.Group>
   <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
     <Form.Label>Age</Form.Label>
