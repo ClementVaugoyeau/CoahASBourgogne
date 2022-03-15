@@ -2,21 +2,25 @@ import React, { useState } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
 import inventoryData from '../../database/inventory-data.json'
+import EventEmitter from 'events';
 
 
 
-function PlayerTable() {
+
+function PlayerTable()  {
 
 
-  const FirstPlayer = [
-    1,
-    'Mark',
-    'Jacob',
-    18,
-    'm.j@gmail.com',
-    '0601020304',
-    'Poussins',
-  ];
+
+
+  const modifyData = () => {
+
+    fetch(inventoryData).then { response
+
+    }
+
+
+
+  }
 
 
 
@@ -37,6 +41,14 @@ function PlayerTable() {
   ));
 
   return (
+
+
+
+
+
+
+
+
     <div className="playerTableContainer">
       <Table striped bordered hover>
         <thead>
@@ -58,7 +70,7 @@ function PlayerTable() {
           <td>{postDetail.etat}</td>
           <td>{postDetail.quantite}</td>
           <td>{postDetail.note}</td>
-          <td><button className='btn btn-dark'>Modifier</button></td>
+          <td id ="f" key={index}><button key={postDetail.id} onClick ={modifyData} value={postDetail.id + 1} type='submit' id='modifyButton' className ='modifyButtonbtn btn-dark'>Modifier</button></td>
           </tr>
           </tbody>
           })}
