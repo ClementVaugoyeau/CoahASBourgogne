@@ -77,7 +77,7 @@ function PlayerTable() {
 
   return (
     <div className="playerTableContainer">
-      <Accordion  class=''>
+      <Accordion  className=''>
   <Accordion.Item className="accordion-item " eventKey="0">
     <Accordion.Header  className="accordion-header"><div className='btn btn-primary'>Ajouter un joueur ▼ </div></Accordion.Header>
     <Accordion.Body>
