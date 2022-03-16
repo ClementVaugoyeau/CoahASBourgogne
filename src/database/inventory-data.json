@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "type": "Maillots S",
+    "etat": "Neufs",
+    "quantite": 60,
+    "note": "Racheter 10 maillot pour la prochaine saison"
+   },
+   {
+    "id": 2,
+    "type": "Maillots M",
+    "etat": "Neufs",
+    "quantite": 30,
+    "note": "2 maillots manquants"
+   },
+   {
+    "id": 3,
+    "type": "Chasubles",
+    "etat": "Neufs",
+    "quantite": 123,
+    "note": ""
+   },
+   {
+    "id": 4,
+    "type": "Maillots S",
+    "etat": "Neufs",
+    "quantite": 60,
+    "note": "'Racheter 10 maillot pour la prochaine saison"
+   }
+
+
+
+
+
+]
