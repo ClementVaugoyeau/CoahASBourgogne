@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
-import inventoryData from '../../../db.json'
+import inventoryData from '../../../assets/db.json'
 // import inventoryData from '../../database/inventory-data.json'
 import EventEmitter from 'events';
 import axios from 'axios';

@@ -48,6 +48,13 @@
       "etat": "Bon",
       "note": "lordinateur",
       "id": 7
+    },
+    {
+      "type": "fdsfds",
+      "quantite": "4",
+      "etat": "fdfdf",
+      "note": "dfdffd",
+      "id": 8
     }
   ]
 }
