@@ -1,0 +1,60 @@
+{
+  "inventory": [
+    {
+      "id": 1,
+      "type": "Maillots S",
+      "etat": "Neufs",
+      "quantite": 60,
+      "note": "Racheter 10 maillot pour la prochaine saison"
+    },
+    {
+      "id": 2,
+      "type": "Maillots M",
+      "etat": "Neufs",
+      "quantite": 30,
+      "note": "2 maillots manquants"
+    },
+    {
+      "id": 3,
+      "type": "Chasubles",
+      "etat": "Neufs",
+      "quantite": 123,
+      "note": ""
+    },
+    {
+      "id": 4,
+      "type": "Maillots S",
+      "etat": "Neufs",
+      "quantite": 60,
+      "note": "'Racheter 10 maillot pour la prochaine saison"
+    },
+    {
+      "type": "Chasubles",
+      "etat": "Neufs",
+      "quantite": 123,
+      "note": "",
+      "id": 5
+    },
+    {
+      "type": "dsdsd",
+      "quantite": "3",
+      "etat": "dsd",
+      "note": "sdsd",
+      "id": 6
+    },
+    {
+      "type": "Plots",
+      "quantite": "78",
+      "etat": "Bon",
+      "note": "lordinateur",
+      "id": 7
+    },
+    {
+      "type": "fdsfds",
+      "quantite": "4",
+      "etat": "fdfdf",
+      "note": "dfdffd",
+      "id": 8
+    }
+  ]
+}

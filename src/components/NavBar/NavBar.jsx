@@ -10,6 +10,7 @@ function NavBar() {
       <div> <Link to="/InventoryPage"> Inventaire matériels </Link> </div>
       <div> <Link to="/InventoryPage"> Attestations </Link> </div>
       <div> <Link to="/StatPage"> Statistiques </Link> </div>
+      <div> <Link to="/ProfilePage"> PlayerProfil </Link> </div>
       <div> <Link to="/InventoryPage"> Agenda </Link> </div>
 
     </div>
