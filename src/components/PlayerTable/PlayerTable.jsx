@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-plusplus */
+/* eslint-disable one-var */
+/* eslint-disable prettier/prettier */
+import React, { useState, useEffect } from 'react';
+
 import './PlayerTable.scss';
-import { Table } from 'react-bootstrap';
-import data from '../mock-data.json';
+import { Table, Accordion, Form, Button } from 'react-bootstrap';
+
+import playersData from '../../database/players-data.json'
+
+import { json } from 'stream/consumers';
+import testCSV from './test.csv'
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 function PlayerTable() {
-  const [contacts, setContacts] = useState(data);
+
+  const [playersDataBase, setPlayersDatabase] = useState();
+
+
+
+
 
   function myFunction() {
 
 
     // Declare variables
+    // eslint-disable-next-line no-var
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -30,60 +51,104 @@ function PlayerTable() {
     }
   }
 
-  const FirstPlayer = [
-    1,
-    'Mark',
-    'Jacob',
-    18,
-    'm.j@gmail.com',
-    '0601020304',
-    'Poussins',
-  ];
+   useEffect(()=>{
 
-  // const lis = FirstPlayer.map((item, k) => <li key={k}>{item}</li>); exemple map
 
-  const playerList = [
-    [1, '2 220 934 354', 'Mark', 'Jacob', 18, 'm.j@gmail.com', '0601020304', 'Poussins'],
-    [2, '2 234 454 201', 'Erik', 'Smith', 23, 'm@outlook.com', '0601020304', 'Minimes'],
-    [3, '2 836 904 394', 'Ryan', 'Jones', 20, 'm@gmail.com', '0601020304', 'Minimes'],
-    [4, '2 434 300 284', 'Alexis', 'Ryan', 20, 'm@gmail.com', '0601020304', 'Cadet'],
-  ];
 
-  const playersArray = [];
+   },[])
 
+  // const players = playerList.map((item, k) => (
+  //   <td key={k}>{item, console.log(fo)} </td>
+  // ));
+
+
+
+  // const players = playerList.map((item, k) => (
+  //   <tr key={k}>
+  //     {item.map((i, k2) => (
+  //       <td key={k2}>{i}</td>
+  //     ))}
+  //   </tr>
+  // ));
 
 
 
 
-
-
-  const players = playerList.map((item, k) => (
-    <tr key={k}>
-      {item.map((i, k2) => (
-        <td key={k2}>{i}</td>
-      ))}
-    </tr>
-  ));
 
   return (
     <div className="playerTableContainer">
+      <Accordion  className=''>
+  <Accordion.Item className="accordion-item " eventKey="0">
+    <Accordion.Header  className="accordion-header"><div className='btn btn-primary'>Ajouter un joueur ▼ </div></Accordion.Header>
+    <Accordion.Body>
+    <Form className="formContainer">
+  <Form.Group  className="formGroup mb-1" controlId="formBasicEmail">
+    <Form.Label>Prénom</Form.Label>
 
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Bar de recherche" />
-      <Table id='myTable' className='playerTable' striped bordered hover responsive >
+    <Form.Control className='inputFormPlayers' type="name" placeholder="Prénom" />
+
+  </Form.Group>
+
+  <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
+    <Form.Label>Nom</Form.Label>
+    <Form.Control type='name' placeholder="Nom" />
+  </Form.Group>
+  <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
+    <Form.Label>Age</Form.Label>
+    <Form.Control type="Age" placeholder="Age" />
+  </Form.Group>
+  <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
+    <Form.Label>Mail</Form.Label>
+    <Form.Control type="Mail" placeholder="Mail" />
+  </Form.Group>
+  <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
+    <Form.Label>Téléphone</Form.Label>
+    <Form.Control type="Téléphone" placeholder="Téléphone" />
+  </Form.Group>
+  <Form.Group className="formGroup mb-3" controlId="formBasicPassword">
+    <Form.Label>Equipe</Form.Label>
+    <Form.Control type="Equipe" placeholder="Equipe" />
+  </Form.Group>
+  {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="Check me out" />
+  </Form.Group> */}
+  <Button variant="primary" type="submit">
+    Confirmer
+  </Button>
+</Form>
+
+    </Accordion.Body>
+  </Accordion.Item>
+ </Accordion>
+
+      <input type="text" id="myInput" placeholder="Recherchez un joueur" />
+      <Table id='myTable' className='table' striped bordered hover responsive >
         <thead>
           <tr>
             <th>#</th>
             <th>Numero de license</th>
-            <th>Prénom </th>
-            <th>Nom</th>
+            <th>Prénom Nom </th>
             <th>Age</th>
             <th>Mail</th>
             <th>Téléphone</th>
             <th>Equipe</th>
           </tr>
         </thead>
-        <tbody>{players}</tbody>
+        {playersData.map((postDetail, index)=>{
+          return <tbody> <tr>
+          <td>{postDetail.id}</td>
+          <td>{postDetail.licenseNumber}</td>
+          <td>{postDetail.fullName}</td>
+          <td>{postDetail.age}</td>
+          <td>{postDetail.email}</td>
+          <td>{postDetail.phoneNumber}</td>
+          <td>{postDetail.categorie}</td>
+          </tr>
+          </tbody>
+          })}
+
       </Table>
+
     </div>
   );
 }

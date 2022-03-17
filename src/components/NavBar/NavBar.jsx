@@ -5,13 +5,14 @@ function NavBar() {
   return (
     <div className="navBarContainer">
 
-      <a><Link to="/">  Accueil  </Link></a>
-      <a> <Link to="/PlayerTablePage"> Tableau joueurs </Link> </a>
-      <a> <Link to="/InventoryPage"> Inventaire matériels </Link> </a>
-      <a> <Link to="/InventoryPage"> Attestations </Link> </a>
-      <a> <Link to="/InventoryPage"> Statistiques </Link> </a>
-      <a> <Link to="/InventoryPage"> Agenda </Link> </a>
-    
+      <div><Link to="/">  Accueil  </Link></div>
+      <div> <Link to="/PlayerTablePage"> Tableau joueurs </Link> </div>
+      <div> <Link to="/InventoryPage"> Inventaire matériels </Link> </div>
+      <div> <Link to="/InventoryPage"> Attestations </Link> </div>
+      <div> <Link to="/StatPage"> Statistiques </Link> </div>
+      <div> <Link to="/ProfilePage"> PlayerProfil </Link> </div>
+      <div> <Link to="/InventoryPage"> Agenda </Link> </div>
+
     </div>
   );
 }
