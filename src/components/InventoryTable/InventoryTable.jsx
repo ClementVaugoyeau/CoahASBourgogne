@@ -1,7 +1,8 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
-import inventoryData from '../../database/inventory-data.json'
+import inventoryData from '../../../db.json'
+// import inventoryData from '../../database/inventory-data.json'
 import EventEmitter from 'events';
 import axios from 'axios';
 import { json, text } from 'stream/consumers';
@@ -22,7 +23,9 @@ import { format } from 'path';
 
 function PlayerTable()  {
 
-  const [data, setData] = useState(inventoryData);
+  const [data, setData] = useState(inventoryData.inventory);
+  const [sendData, setSendData] = useState();
+  const [key, setKey] = useState(0);
   const [addFormData, setAddFormData] = useState({
     id: data.length + 1,
     type: "",
@@ -42,6 +45,41 @@ function PlayerTable()  {
   })
 
   const [editMaterielId, setEditMaterielId] = useState(null);
+
+  // `../../assets/inventory-data.json`
+
+    const getData = () => {
+
+     fetch("http://localhost:3000/inventory/1")
+     .then(function(response) {
+        return console.log(response)
+      })
+
+  }
+
+    const postData = (event) => {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'chasuble', quantite : 10 })
+    };
+    fetch('http://localhost:3000/inventory', requestOptions)
+        .then(response => response.json())
+        .then(data => setSendData({ postId: data.id}));
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,7 +126,15 @@ function PlayerTable()  {
 
     const newItems = [...data, newItem];
     setData(newItems);
-    inventoryData.push(newItem);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({type : newItem.type, quantite : newItem.quantite, etat : newItem.etat, note : newItem.note})
+  };
+  fetch('http://localhost:3000/inventory', requestOptions)
+      .then(response => response.json())
+      .then(data => setSendData({ postId: data.id}));
   }
 
   const handleEditFormSubmit = (event) => {
@@ -148,18 +194,27 @@ function PlayerTable()  {
 
   }
 
+  const saveData = (data) => {
+
+    localStorage.setItem("data", JSON.stringify(data));
+    var a = localStorage.getItem("data");
+    console.log(2);
+    console.log(a);
 
 
 
-  // const store = new Store();
-  // store.set('1', lol);
-  // console.log(store.get('lol'))
+  }
 
 
 
-//  useEffect(() => {
 
-//  });
+
+
+ useEffect(() => {
+
+  getData()
+
+ });
 
 //   getData = () => {
 //   fetch(inventoryData)
@@ -267,6 +322,7 @@ function PlayerTable()  {
           onChange={handleAddFormChange}
           />
           <button className='btn btn-primary' type='submit'>Ajouter</button>
+          <button className='btn btn-primary' type='button' onClick={postData}>Post</button>
 
       </form>
     </div>
