@@ -132,6 +132,7 @@ function PlayerTable() {
             <th>Mail</th>
             <th>Téléphone</th>
             <th>Equipe</th>
+            <th>Actions</th>
           </tr>
         </thead>
         {playersData.map((postDetail, index)=>{

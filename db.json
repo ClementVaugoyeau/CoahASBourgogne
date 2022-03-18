@@ -1,72 +1,39 @@
 {
   "inventory": [
     {
-      "id": 1,
       "type": "Maillots S",
-      "etat": "Neufs",
-      "quantite": 60,
-      "note": "Racheter 10 maillot pour la prochaine saison"
+      "quantite": "56",
+      "etat": "Bon",
+      "note": "2 maillots manquants ",
+      "id": 1
     },
     {
-      "id": 2,
       "type": "Maillots M",
-      "etat": "Neufs",
-      "quantite": 30,
-      "note": "2 maillots manquants"
+      "quantite": "56",
+      "etat": "Correct",
+      "note": "2 maillots manquants ",
+      "id": 2
     },
     {
-      "id": 3,
-      "type": "Chasubles",
-      "etat": "Neufs",
-      "quantite": 123,
-      "note": ""
-    },
-    {
-      "id": 4,
-      "type": "Maillots S",
-      "etat": "Neufs",
-      "quantite": 60,
-      "note": "'Racheter 10 maillot pour la prochaine saison"
-    },
-    {
-      "type": "Chasubles",
-      "etat": "Neufs",
-      "quantite": 123,
-      "note": "",
-      "id": 5
-    },
-    {
-      "type": "dsdsd",
-      "quantite": "3",
-      "etat": "dsd",
-      "note": "sdsd",
-      "id": 6
+      "type": "Maillot L",
+      "quantite": "34",
+      "etat": "bon ",
+      "note": "9 manquants",
+      "id": 3
     },
     {
       "type": "Plots",
-      "quantite": "78",
+      "quantite": "67",
+      "etat": "Neufs",
+      "note": "Correct",
+      "id": 4
+    },
+    {
+      "type": "Bandes pour jouer",
+      "quantite": "67",
       "etat": "Bon",
-      "note": "lordinateur",
-      "id": 7
-    },
-    {
-      "type": "fdsfds",
-      "quantite": "4",
-      "etat": "fdfdf",
-      "note": "dfdffd",
-      "id": 8
-    },
-    {
-      "type": "chasuble",
-      "quantite": 10,
-      "id": 9
-    },
-    {
-      "type": "fddfs",
-      "quantite": "2",
-      "etat": "dfd",
-      "note": "fdfd",
-      "id": 10
+      "note": "Correct",
+      "id": 5
     }
   ]
 }
