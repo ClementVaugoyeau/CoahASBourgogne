@@ -1,57 +1,65 @@
 import './PlayersProfile.scss';
 import { useState } from 'react';
+import { Table } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+
+
+
+
 
 export default function ProfilePage() {
 
   const player = {
     surName: "Shaban",
     lastName: "Hamiti",
-    age: 19,
+    age: 11,
     equipe: "équipe u4",
     adresse: "13 rue Jean Jaurès, 59300",
     email: "s@s.fr",
-    telephone: "06.66.66.66.66",
-    note: "wesh"
+    telephone: "06.76.56.45.33",
+    note: "Attaquant"
   }
 
   const matchList = [
-    [1, 'Equipe u3', 'Equipe u2', "1-0", '10/03/2022'],
-    [2, 'Equipe u4', 'Equipe u3', "0-2", '10/03/2022'],
-    [3, 'Equipe u2', 'Equipe u1', "1-3", '11/03/2022'],
-    [4, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [5, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [6, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [7, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [8, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [9, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [10, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [11, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [12, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [13, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [14, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [15, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [16, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [17, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [18, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [19, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [20, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [21, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [22, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [23, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [24, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [25, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [26, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [27, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [28, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [29, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [30, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [31, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [32, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [33, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [34, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [35, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [36, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
-    [37, 'Equipe u1', 'Equipe u4', "2-3", '11/03/2022'],
+    [1, 'AS Bourgone u11', 'LOSC', "1-0", '10/03/2022'],
+    [2, 'AS Bourgone u11', 'LOSC', "0-2", '10/03/2022'],
+    [3, 'AS Bourgone u11', 'FC Roubaix', "1-3", '11/03/2022'],
+    [4, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [5, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [6, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [7, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [8, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [9, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [10, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [11, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [12, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [13, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [14, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [15, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [16, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [17, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [18, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [19, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [20, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [21, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [22, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [23, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [24, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [25, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [26, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [27, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [28, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [29, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [30, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [31, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [32, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [33, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [34, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [35, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [36, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
+    [37, 'AS Bourgone u11', 'FC Roubaix', "2-3", '11/03/2022'],
   ];
 
   const [temp, setTemp] = useState(matchList);
@@ -89,20 +97,28 @@ export default function ProfilePage() {
 
   return(
     <div className="playerContainer">
-      <div className='playerBody flex'>
-        <div className='playerInfoContainer'>
-          <div className='playerInfo'>
-            <h1>{player.surName} {player.lastName}</h1>
-            <p>{player.age} ans</p>
-            <p>{player.equipe}</p>
-            <p>{player.adresse}</p>
-            <p>{player.email}</p>
-            <p>{player.telephone}</p>
-            <p><em>Note :</em> {player.note}</p>
+      <div className='playerBody'>
+
+          <div className='TableContainerFitHeader'>
+
+
+
+            <Table striped bordered hover >
+            <th ><FontAwesomeIcon icon={faUser} className='fas fa-user fa-3x' ></FontAwesomeIcon></th>
+            <th><h3>{player.surName} {player.lastName}</h3></th>
+            <th>{player.age} ans</th>
+            <th>{player.equipe}</th>
+            <th>{player.adresse}</th>
+            <th>{player.email}</th>
+            <th>{player.telephone}</th>
+            <th><em>Note :</em> {player.note}</th>
+            </Table>
           </div>
 
-          <div className="containerPlayerMatch">
-            <table className='playerMatchTable'>
+          <div className='playerInfoContainer'>
+
+          <div className="TableContainerFit">
+            <Table striped bordered hover >
               <thead>
                 <tr>
                   <th>#</th>
@@ -115,30 +131,59 @@ export default function ProfilePage() {
               <tbody>
                 {getPage()}
               </tbody>
-            </table>
+            </Table>
 
             <div className='flex paginationMenuContainer'>
-              <div className='flex paginationMenu'>
-                <button className='pagiButton' onClick={pagPrevious}>Préc.</button>
-                <div className='pagNum'>{pagNum}</div>
-                <button className='pagiButton' onClick={pagNext}>Suiv.</button>
+              <div className='paginationMenu'>
+                <button className='btn btn-primary' onClick={pagPrevious}>Préc.</button>
+                <div className='btn bg-dark text-light'>{pagNum}</div>
+                <button className='btn btn-primary ' onClick={pagNext}>Suiv.</button>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className='playerDoc flex_column'>
-          <h2>Documents</h2>
-          <div><p>Document 1</p><button>Télécharger</button></div>
-          <div><p>Document 2</p><button>Télécharger</button></div>
-          <div><p>Document 3</p><button>Télécharger</button></div>
-          <div><p>Document 4</p><button>Télécharger</button></div>
-          <div><p>Document 5</p><button>Télécharger</button></div>
-          <div><p>Document 6</p><button>Télécharger</button></div>
-          <div><p>Document 7</p><button>Télécharger</button></div>
-          <div><p>Document 8</p><button>Télécharger</button></div>
-          <div><p>Document 9</p><button>Télécharger</button></div>
-          <div><p>Document 10</p><button>Télécharger</button></div>
+
+
+        <div className="TableContainerFit">
+
+        <Table striped bordered hover >
+
+          <thead>
+          <th>Documents</th>
+
+          </thead>
+          <tbody>
+          <tr>
+          <td>Document 1<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 2<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 3<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 4<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 5<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 6<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+          <tr>
+          <td>Document 7<button className='btn btn-primary'>Télécharger</button></td>
+          </tr>
+
+
+
+
+          </tbody>
+
+          </Table>
+
+
+        </div>
         </div>
       </div>
     </div>

@@ -230,6 +230,9 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.0",
+    "@fortawesome/free-solid-svg-icons": "^6.1.0",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "assert": "^2.0.0",
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",

@@ -3,67 +3,113 @@
   width: 85%;
   background-color: white;
   padding: 2.5%;
+  color: black;
+
 }
 
-.playerBody{
-  justify-content: space-between;
-  height: 100%;
-  .playerInfoContainer{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .playerInfo{
-    font-size: 30px;
-    p{
-      margin: 0;
-    }
-  }
-  .playerDoc{
-    display: flex;
-    background-color: black;
-    border: 2px solid black;
-    box-shadow: 30px -16px cyan;
-    min-width: 300px;
-    min-height: 500px;
-    padding: 15px;
-    text-align: center;
-    justify-content: space-between;
-    h2{
-      color: white;
-    }
-    div{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      p{
-        color: white;
-        margin: 0;
-      }
-    }
-  }
+.playerInfoContainer {
+  display: grid;
+  grid-template-columns: 70% 30%;
+
+
 }
 
-.containerPlayerMatch{
-  width: 100%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  .playerMatchTable{
-    width: 100%;
-    text-align: center;
-    box-shadow: 60px -16px cyan;
-    border: 2px solid black;
-    th{
-      background-color: black;
-      border: 1px solid white;
-    }
-    td{
-      color: black;
-      border: 1px solid black;
-    }
-  }
+.TableContainerFit
+{
+
+  margin: 2rem;
+ background: rgb(252, 252, 252);
+ color: black;
+
+
+ box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
+  0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+
+
 }
+
+.TableContainerFitHeader
+{
+
+  margin: 2rem;
+ background: rgb(252, 252, 252);
+ color: rgb(0, 0, 0);
+
+
+ box-shadow: 0px 8px 28px -6px rgba(0, 0, 0, 0.30),
+  0px 18px 88px -4px rgba(0, 0, 0, 0.30);
+
+
+}
+
+
+
+
+// .playerBody{
+//   justify-content: space-between;
+//   height: 100%;
+//   .playerInfoContainer{
+//     width: 50%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//   }
+//   .playerInfo{
+//     font-size: 30px;
+//     p{
+//       margin: 0;
+//     }
+//   }
+//   .playerDoc{
+//     display: flex;
+//     background-color: black;
+//     border: 2px solid black;
+//     box-shadow: 30px -16px cyan;
+//     min-width: 300px;
+//     min-height: 500px;
+//     padding: 15px;
+//     text-align: center;
+//     justify-content: space-between;
+//     h2{
+//       color: white;
+//     }
+//     div{
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       p{
+//         color: white;
+//         margin: 0;
+//       }
+//     }
+//   }
+// }
+
+// .containerPlayerMatch{
+//   width: 100%;
+//   background-color: white;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   .playerMatchTable{
+//     width: 100%;
+//     text-align: center;
+//     box-shadow: 60px -16px cyan;
+//     border: 2px solid black;
+//     th{
+//       background-color: black;
+//       border: 1px solid white;
+//     }
+//     td{
+//       color: black;
+//       border: 1px solid black;
+//     }
+//   }
+// }
+
+// .playerBody
+// {
+//   display: inline;
+
+// }
