@@ -29,6 +29,12 @@ function PlayerTable() {
     note: '',
   });
 
+  useEffect(() => {
+
+    getData();
+
+  },[])
+
   const [editFormData, setEditFormData] = useState({
     id: data.id,
     type: '',
@@ -119,30 +125,56 @@ function PlayerTable() {
       // inputs.value = "";
   };
 
-  const handleEditFormSubmit = (event) => {
+  const handleEditFormSubmit = (event, id) => {
     event.preventDefault();
 
     const editedData = {
-      id: editFormData.id,
+
       type: editFormData.type,
       etat: editFormData.etat,
       quantite: editFormData.quantite,
-      note: editFormData.note,
+      note: editFormData.note
     };
 
     const newData = [...data];
 
     const index = data.findIndex((data) => data.id === editMaterielId);
 
+
     newData[index] = editedData;
     setData(newData);
-    setEditMaterielId(null);
+
+    const idForFecth = editMaterielId;
+
+
+
+
+
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(editedData),
+    };
+    fetch(`http://localhost:3000/inventory/${editMaterielId}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => setSendData({data}));
+
+      setEditMaterielId(null);
+
+
+
+
+
+
   };
 
-  const handleEditClick = (event, data) => {
+  const handleEditClick = (event, data, id) => {
     event.preventDefault();
 
     setEditMaterielId(data.id);
+
+
 
     const formValues = {
       id: data.id,
@@ -153,6 +185,16 @@ function PlayerTable() {
     };
 
     setEditFormData(formValues);
+
+    // const requestOptions = {
+    //   method: 'PUT',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(formValues),
+    // };
+    // fetch(`http://localhost:3000/inventory${id}`, requestOptions)
+    //   .then((response) => response.json())
+    //   .then((data) => setSendData({ postId: data.id }));
+
   };
 
   const handleCancelClick = () => {
@@ -193,7 +235,7 @@ function PlayerTable() {
               <th>Quantitée</th>
 
               <th>Note</th>
-              <th>Actions</th>
+              <th>Actions <button type='button' onClick={getData} className='btn btn-primary'>Rafraichir</button></th>
             </tr>
           </thead>
           <tbody>
