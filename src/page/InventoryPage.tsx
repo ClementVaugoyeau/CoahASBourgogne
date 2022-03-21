@@ -8,7 +8,7 @@ const InventoryPage = () => {
         <NavBar />
 
         <div className="page">
-          <p>Page</p>
+         
           <div className="Hello">
             <h2>Inventaire</h2>
             <InventoryTable/>
