@@ -10,7 +10,7 @@ const ProfilePage = () => {
         <div className="page">
           Page
           <div className="Hello">
-            <h2>Tableau des joueurs</h2>
+            <h2>Profil Joueurs</h2>
             <PlayerProfile />
           </div>
         </div>

@@ -224,7 +224,7 @@ function PlayerTable() {
 },[])
 
   return (
-    <div className="InventoryTableContainer">
+    <div className="TableContainer">
       <form onSubmit={handleEditFormSubmit}>
         <Table striped bordered hover>
           <thead>
