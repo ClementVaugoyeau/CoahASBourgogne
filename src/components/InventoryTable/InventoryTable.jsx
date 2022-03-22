@@ -7,8 +7,8 @@ import axios from 'axios';
 import { json, text } from 'stream/consumers';
 import Store from 'electron-store';
 import { nanoid } from 'nanoid';
-import ReadOnlyRow from 'components/Rows/ReadOnlyRow';
-import EditableRow from 'components/Rows/EditableRow';
+import ReadOnlyRow from 'components/Rows/InventoryReadOnlyRow';
+import EditableRow from 'components/Rows/InventoryEditableRow';
 
 import assert, { ok } from 'assert';
 import { writeJsonFileSync } from 'write-json-file';
@@ -29,12 +29,6 @@ function PlayerTable() {
     note: '',
   });
 
-  useEffect(() => {
-
-    getData();
-
-  },[])
-
   const [editFormData, setEditFormData] = useState({
     id: data.id,
     type: '',
@@ -44,6 +38,16 @@ function PlayerTable() {
   });
 
   const [editMaterielId, setEditMaterielId] = useState(null);
+
+  useEffect(() => {
+
+    getData();
+
+  },[])
+
+
+
+
 
   // `../../assets/inventory-data.json`
 
@@ -217,14 +221,45 @@ function PlayerTable() {
 
   };
 
-  useEffect(() => {
 
-    getData();
-
-},[])
 
   return (
     <div className="TableContainer">
+
+<h3>Ajouter matériels</h3>
+      <form onSubmit={handleAddFormSubmit}>
+        <input
+          type="text"
+          name="type"
+          required="required"
+          placeholder="entrez un type de matériel.."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="etat"
+          required="required"
+          placeholder="entrez l'état.."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="number"
+          name="quantite"
+          required="required"
+          placeholder="entrez la quantité..."
+          onChange={handleAddFormChange}
+        />
+        <input
+          type="text"
+          name="note"
+          placeholder="entrez une note..."
+          onChange={handleAddFormChange}
+        />
+        <button className="btn btn-primary" type="submit">
+          Ajouter
+        </button>
+      </form>
+
       <form onSubmit={handleEditFormSubmit}>
         <Table striped bordered hover>
           <thead>
@@ -261,39 +296,7 @@ function PlayerTable() {
         </Table>
       </form>
 
-      <h3>Ajouter Matériels</h3>
-      <form onSubmit={handleAddFormSubmit}>
-        <input
-          type="text"
-          name="type"
-          required="required"
-          placeholder="entrez un type de matériel.."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="etat"
-          required="required"
-          placeholder="entrez l'état.."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="number"
-          name="quantite"
-          required="required"
-          placeholder="entrez la quantité..."
-          onChange={handleAddFormChange}
-        />
-        <input
-          type="text"
-          name="note"
-          placeholder="entrez une note..."
-          onChange={handleAddFormChange}
-        />
-        <button className="btn btn-primary" type="submit">
-          Ajouter
-        </button>
-      </form>
+
     </div>
   );
 }
