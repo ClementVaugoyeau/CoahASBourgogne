@@ -41,23 +41,11 @@ function PlayerTable() {
   const [editMaterielId, setEditMaterielId] = useState(null);
 
   useEffect(() => {
-    // launchJSONserver();
-    getData();
+
+    // getData();
   }, []);
 
-  const launchJSONserver = () => {
-    //   spawn('pwd', (error, stdout, stderr) => {
-    //     if (error) {
-    //       console.log(`error: ${error.message}`);
-    //       return;
-    //     }
-    //     if (stderr) {
-    //       console.log(`stderr: ${stderr}`);
-    //       return;
-    //     }
-    //     console.log(`stdout: ${stdout}`);
-    //   });
-  };
+
 
   // `../../assets/inventory-data.json`
 

@@ -39,7 +39,7 @@ const Home = () => {
 
   const handleAddFormChange = () => {
 
-    
+
 
 
 
@@ -159,7 +159,7 @@ const Home = () => {
           >
             Lire Valeur
           </button>
-          <p >voici la valuer enregistree : {value} {player}</p>
+          <p >voici la valeur enregistree : {value} {player}</p>
         </div>
       </div>
     </div>
