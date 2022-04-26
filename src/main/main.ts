@@ -14,6 +14,10 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { exec } from 'child_process';
+import Store from 'electron-store';
+
+
 
 
 
@@ -29,11 +33,47 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
+const store = new Store();
+
+ipcMain.on('electron-store-get', async (event, val) => {
+  event.returnValue = store.get(val);
+});
+ipcMain.on('electron-store-set', async (event, key, val) => {
+  store.set(key, val);
+});
+
+
+
+
+
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
+  // exec('json-server --watch assets/db.json', (err, stdout) => {
+  //   if (err) {
+  //     console.error(err, 'json error');
+  //     return;
+  //   }
+  //   console.log(stdout, 'json ok');
+
+  // });
 });
+
+// ipcMain.on('json', async (event, arg) => {
+
+//   execFile('assets\json-server.bat', (err, stdout) => {
+//     if (err) {
+//       console.error(err);
+//       return;
+//     }
+//     console.log(stdout);
+
+//   });
+
+
+// });
+
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -75,8 +115,8 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: 1600,
+    height: 900,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

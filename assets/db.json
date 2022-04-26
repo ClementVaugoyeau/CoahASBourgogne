@@ -34,6 +34,13 @@
       "etat": "bon",
       "note": "note",
       "id": 9
+    },
+    {
+      "type": "Chasubles  ",
+      "quantite": "4",
+      "etat": "Bon",
+      "note": "hello",
+      "id": 10
     }
   ],
   "player": [
@@ -65,12 +72,12 @@
       "categorie": "U11"
     },
     {
-      "licenceNumber": "2 836 904 394",
-      "fullName": "Ryan Murphy",
-      "age": "10",
-      "email": "R.J@gmail.com",
-      "phoneNumber": "0701020304",
-      "categorie": "U11",
+      "licenceNumber": "))",
+      "fullName": "sqws",
+      "age": "2",
+      "email": "dsd",
+      "phoneNumber": "sd",
+      "categorie": "sd",
       "id": 4
     }
   ]

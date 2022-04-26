@@ -22,6 +22,8 @@ import { CSVLink, CSVDownload } from "react-csv";
 
 
 
+
+
 function PlayerTable() {
 
   const [data, setData] = useState([]);
@@ -53,11 +55,16 @@ function PlayerTable() {
 
 
 
+
+
   useEffect(()=>{
 
     getData();
 
+
   },[])
+
+
 
 
   const getData = () => {
