@@ -15,12 +15,6 @@
       "id": 2
     },
     {
-      "type": "Chasubles",
-      "etat": "Neufs",
-      "quantite": "130",
-      "id": 4
-    },
-    {
       "type": "Maillot entrainement",
       "etat": "Bon",
       "quantite": "40",
@@ -28,17 +22,31 @@
       "id": 6
     },
     {
-      "type": "Plots",
-      "etat": "Abimé",
-      "quantite": "51",
+      "type": "Maillot L",
+      "quantite": "90",
+      "etat": "34",
       "note": "",
-      "id": 7
+      "id": 8
+    },
+    {
+      "type": "maillots",
+      "quantite": "90",
+      "etat": "bon",
+      "note": "note",
+      "id": 9
+    },
+    {
+      "type": "Chasubles  ",
+      "quantite": "4",
+      "etat": "Bon",
+      "note": "hello",
+      "id": 10
     }
   ],
   "player": [
     {
       "id": 1,
-      "licenseNumber": "3 220 934 354",
+      "licenceNumber": "3 220 934 354",
       "fullName": "Jacob Mark",
       "age": 9,
       "email": "m.j@gmail.com",
@@ -47,7 +55,7 @@
     },
     {
       "id": 2,
-      "licenseNumber": "2 234 454 201",
+      "licenceNumber": "2 234 454 201",
       "fullName": "Erik Smith",
       "age": 10,
       "email": "Erik.s@gmail.com",
@@ -56,7 +64,7 @@
     },
     {
       "id": 3,
-      "licenseNumber": "2 836 904 394",
+      "licenceNumber": "2 836 904 394",
       "fullName": "Ryan Jones",
       "age": 10,
       "email": "R.J@gmail.com",
@@ -64,13 +72,13 @@
       "categorie": "U11"
     },
     {
-      "id": 4,
-      "licenseNumber": "2 836 904 394",
-      "fullName": "Micheal Ryan",
-      "age": 10,
-      "email": "A.R@gmail.com",
-      "phoneNumber": "0701020304",
-      "categorie": "U11"
+      "licenceNumber": "))",
+      "fullName": "sqws",
+      "age": "2",
+      "email": "dsd",
+      "phoneNumber": "sd",
+      "categorie": "sd",
+      "id": 4
     }
   ]
 }

@@ -1,21 +1,22 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import './InventoryTable.scss';
 import { Table } from 'react-bootstrap';
-// import inventoryData from '../../database/inventory-data.json'
 import EventEmitter from 'events';
 import axios from 'axios';
 import { json, text } from 'stream/consumers';
 import Store from 'electron-store';
 import { nanoid } from 'nanoid';
-import ReadOnlyRow from 'components/Rows/ReadOnlyRow';
-import EditableRow from 'components/Rows/EditableRow';
+import ReadOnlyRow from 'components/Rows/InventoryReadOnlyRow';
+import EditableRow from 'components/Rows/InventoryEditableRow';
 
 import assert, { ok } from 'assert';
 import { writeJsonFileSync } from 'write-json-file';
 import { write } from 'fs';
 import { ContextReplacementPlugin } from 'webpack';
 import { format } from 'path';
-import inventoryData from '../../../db.json';
+import { exec, spawn } from 'child_process';
+import { shell } from 'electron/common';
+import inventoryData from '../../database/inventory-data.json';
 
 function PlayerTable() {
   const [data, setData] = useState([]);
@@ -29,12 +30,6 @@ function PlayerTable() {
     note: '',
   });
 
-  useEffect(() => {
-
-    getData();
-
-  },[])
-
   const [editFormData, setEditFormData] = useState({
     id: data.id,
     type: '',
@@ -45,13 +40,31 @@ function PlayerTable() {
 
   const [editMaterielId, setEditMaterielId] = useState(null);
 
+  useEffect(() => {
+    // launchJSONserver();
+    getData();
+  }, []);
+
+  const launchJSONserver = () => {
+    //   spawn('pwd', (error, stdout, stderr) => {
+    //     if (error) {
+    //       console.log(`error: ${error.message}`);
+    //       return;
+    //     }
+    //     if (stderr) {
+    //       console.log(`stderr: ${stderr}`);
+    //       return;
+    //     }
+    //     console.log(`stdout: ${stdout}`);
+    //   });
+  };
+
   // `../../assets/inventory-data.json`
 
   const getData = () => {
-    fetch('http://localhost:3000/inventory').
-    then((response) => response.json())
-    .then((data) => setData(data))
-
+    fetch('http://localhost:3000/inventory')
+      .then((response) => response.json())
+      .then((data) => setData(data));
   };
 
   const postData = (event) => {
@@ -93,8 +106,6 @@ function PlayerTable() {
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
-
-
     const newItem = {
       id: addFormData.id + data.length,
       type: addFormData.type,
@@ -120,36 +131,29 @@ function PlayerTable() {
       .then((response) => response.json())
       .then((data) => setSendData({ postId: data.id }));
 
-      // const inputs = document.getElementsByTagName('input')
+    // const inputs = document.getElementsByTagName('input')
 
-      // inputs.value = "";
+    // inputs.value = "";
   };
 
   const handleEditFormSubmit = (event, id) => {
     event.preventDefault();
 
     const editedData = {
-
       type: editFormData.type,
       etat: editFormData.etat,
       quantite: editFormData.quantite,
-      note: editFormData.note
+      note: editFormData.note,
     };
 
     const newData = [...data];
 
     const index = data.findIndex((data) => data.id === editMaterielId);
 
-
     newData[index] = editedData;
     setData(newData);
 
     const idForFecth = editMaterielId;
-
-
-
-
-
 
     const requestOptions = {
       method: 'PUT',
@@ -158,23 +162,15 @@ function PlayerTable() {
     };
     fetch(`http://localhost:3000/inventory/${editMaterielId}`, requestOptions)
       .then((response) => response.json())
-      .then((data) => setSendData({data}));
+      .then((data) => setSendData({ data }));
 
-      setEditMaterielId(null);
-
-
-
-
-
-
+    setEditMaterielId(null);
   };
 
   const handleEditClick = (event, data, id) => {
     event.preventDefault();
 
     setEditMaterielId(data.id);
-
-
 
     const formValues = {
       id: data.id,
@@ -194,7 +190,6 @@ function PlayerTable() {
     // fetch(`http://localhost:3000/inventory${id}`, requestOptions)
     //   .then((response) => response.json())
     //   .then((data) => setSendData({ postId: data.id }));
-
   };
 
   const handleCancelClick = () => {
@@ -206,62 +201,18 @@ function PlayerTable() {
 
     const index = data.findIndex((data) => data.id === id);
 
-
     newData.splice(index, 1);
 
-
-    fetch(`http://localhost:3000/inventory/${id}`, { method: 'DELETE' })
-    .then(response => setSendData({data}));
+    fetch(`http://localhost:3000/inventory/${id}`, { method: 'DELETE' }).then(
+      (response) => setSendData({ data })
+    );
 
     setData(newData);
-
   };
-
-  useEffect(() => {
-
-    getData();
-
-},[])
 
   return (
     <div className="TableContainer">
-      <form onSubmit={handleEditFormSubmit}>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Types de matériels</th>
-              <th>État</th>
-              <th>Quantitée</th>
-
-              <th>Note</th>
-              <th>Actions <button type='button' onClick={getData} className='btn btn-primary'>Rafraichir</button></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((data) => (
-              <>
-                {editMaterielId === data.id ? (
-                  <EditableRow
-                    data={data}
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    handleCancelClick={handleCancelClick}
-                  />
-                ) : (
-                  <ReadOnlyRow
-                    data={data}
-                    handleEditClick={handleEditClick}
-                    handleDeleteClick={handleDeleteClick}
-                  />
-                )}
-              </>
-            ))}
-          </tbody>
-        </Table>
-      </form>
-
-      <h3>Ajouter Matériels</h3>
+      <h3>Ajouter matériels</h3>
       <form onSubmit={handleAddFormSubmit}>
         <input
           type="text"
@@ -293,6 +244,51 @@ function PlayerTable() {
         <button className="btn btn-primary" type="submit">
           Ajouter
         </button>
+      </form>
+
+      <form onSubmit={handleEditFormSubmit}>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Types de matériels</th>
+              <th>État</th>
+              <th>Quantitée</th>
+
+              <th>Note</th>
+              <th>
+                Actions{' '}
+                <button
+                  type="button"
+                  onClick={getData}
+                  className="btn btn-primary"
+                >
+                  Rafraichir
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((data) => (
+              <>
+                {editMaterielId === data.id ? (
+                  <EditableRow
+                    data={data}
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    data={data}
+                    handleEditClick={handleEditClick}
+                    handleDeleteClick={handleDeleteClick}
+                  />
+                )}
+              </>
+            ))}
+          </tbody>
+        </Table>
       </form>
     </div>
   );

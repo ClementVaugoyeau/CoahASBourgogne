@@ -2,7 +2,17 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electron', {
 
-  
+  store: {
+    get(val) {
+      return ipcRenderer.sendSync('electron-store-get', val);
+    },
+    set(property, val) {
+      ipcRenderer.send('electron-store-set', property, val);
+    },
+    // Other method you want to add like has(), reset(), etc.
+  }, 
+
+
   ipcRenderer: {
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');

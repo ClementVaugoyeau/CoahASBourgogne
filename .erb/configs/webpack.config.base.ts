@@ -7,7 +7,9 @@ import webpackPaths from './webpack.paths';
 import { dependencies as externals } from '../../release/app/package.json';
 
 const configuration: webpack.Configuration = {
-  externals: [...Object.keys(externals || {})],
+  externals: [...Object.keys(externals || {}), 'child_process' ],
+
+ 
 
   stats: 'errors-only',
 
@@ -42,6 +44,8 @@ const configuration: webpack.Configuration = {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
   },
+
+
 
   plugins: [
     new webpack.EnvironmentPlugin({
